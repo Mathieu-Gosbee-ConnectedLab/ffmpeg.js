@@ -37,12 +37,11 @@ WEBM_SHARED_DEPS = \
 	build/opus/dist/lib/libopus.so \
 	build/libvpx/dist/lib/libvpx.so
 
-MP4_MUXERS = mp4 mp3 null image2
-MP4_ENCODERS = libx264 libmp3lame aac mjpeg
+MP4_MUXERS = mp4 null
+MP4_ENCODERS = libx264 aac
 FFMPEG_MP4_BC = build/ffmpeg-mp4/ffmpeg.bc
 FFMPEG_MP4_PC_PATH = ../x264/dist/lib/pkgconfig
 MP4_SHARED_DEPS = \
-	build/lame/dist/lib/libmp3lame.so \
 	build/x264/dist/lib/libx264.so
 
 all: webm mp4
@@ -297,10 +296,7 @@ build/ffmpeg-mp4/ffmpeg.bc: $(MP4_SHARED_DEPS)
 		$(addprefix --enable-encoder=,$(MP4_ENCODERS)) \
 		$(addprefix --enable-muxer=,$(MP4_MUXERS)) \
 		--enable-gpl \
-		--enable-libmp3lame \
 		--enable-libx264 \
-		--extra-cflags="-I../lame/dist/include" \
-		--extra-ldflags="-L../lame/dist/lib" \
 		&& \
 	emmake make -j8 && \
 	cp ffmpeg ffmpeg.bc
