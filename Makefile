@@ -247,10 +247,11 @@ FFMPEG_COMMON_ARGS = \
 	--enable-swscale \
 	--enable-avfilter \
 	--disable-network \
+	--disable-cuvid \
 	--disable-d3d11va \
 	--disable-dxva2 \
+	--disable-ffnvcodec \
 	--disable-vaapi \
-	--disable-vda \
 	--disable-vdpau \
 	$(addprefix --enable-decoder=,$(COMMON_DECODERS)) \
 	$(addprefix --enable-demuxer=,$(COMMON_DEMUXERS)) \
@@ -261,7 +262,7 @@ FFMPEG_COMMON_ARGS = \
 	--disable-iconv \
 	--disable-libxcb \
 	--disable-lzma \
-	--disable-sdl \
+	--disable-sdl2 \
 	--disable-securetransport \
 	--disable-xlib \
 	--disable-zlib
